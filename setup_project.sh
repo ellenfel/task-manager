@@ -44,8 +44,8 @@ git add .
 git commit -m "Configured PostgreSQL database"
 
 # Create Django apps
-python manage.py startapp users
-python manage.py startapp tasks
+python manage.py startapp user_app
+python manage.py startapp task_app
 git add .
 git commit -m "Created users and tasks apps"
 
