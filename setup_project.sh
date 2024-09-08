@@ -74,6 +74,9 @@ EOL
 git add .
 git commit -m "Defined models for users and tasks"
 
+
+
+# we are here
 # Create serializers
 mkdir users/serializers.py
 cat <<EOL > users/serializers.py
