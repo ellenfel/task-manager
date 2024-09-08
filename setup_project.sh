@@ -122,6 +122,8 @@ EOL
 git add .
 git commit -m "Created views for users and tasks"
 
+
+# Issue arrived here
 # Configure URLs
 cat <<EOL > task_manager/urls.py
 from django.contrib import admin
