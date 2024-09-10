@@ -75,8 +75,6 @@ git add .
 git commit -m "Defined models for users and tasks"
 
 
-
-# we are here
 # Create serializers
 mkdir users/serializers.py
 cat <<EOL > users/serializers.py
@@ -126,6 +124,8 @@ git add .
 git commit -m "Created views for users and tasks"
 
 
+
+# we are here...
 # Issue arrived here
 # Configure URLs
 cat <<EOL > task_manager/urls.py
