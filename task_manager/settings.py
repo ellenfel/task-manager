@@ -132,3 +132,15 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'rest_framework',  # If you are using Django REST framework
+    'users',  # Add your users app here
+    'tasks',  # Add your tasks app here if not already added
+]

@@ -124,9 +124,6 @@ git add .
 git commit -m "Created views for users and tasks"
 
 
-
-# we are here...
-# Issue arrived here
 # Configure URLs
 cat <<EOL > task_manager/urls.py
 from django.contrib import admin
@@ -146,6 +143,10 @@ urlpatterns = [
 EOL
 git add .
 git commit -m "Configured URLs for users and tasks"
+
+
+# we are here...
+# Issue arrived here
 
 # Run migrations
 python manage.py makemigrations
