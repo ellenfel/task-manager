@@ -100,6 +100,7 @@ EOL
 git add .
 git commit -m "Created serializers for users and tasks"
 
+
 # Create views
 cat <<EOL > users/views.py
 from rest_framework import viewsets
@@ -145,8 +146,22 @@ git add .
 git commit -m "Configured URLs for users and tasks"
 
 
-# we are here...
-# Issue arrived here
+
+# Add installed apps
+cat <<EOL >> task_manager/settings.py
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'rest_framework',  # If you are using Django REST framework
+    'users',  # Add your users app here
+    'tasks',  # Add your tasks app here if not already added
+]
+EOL
 
 # Run migrations
 python manage.py makemigrations
