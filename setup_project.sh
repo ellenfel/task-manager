@@ -7,9 +7,6 @@ set -e
 #git init task_manager
 #cd task_manager
 
-# Create a virtual environment and activate it
-python3 -m venv env
-source env/bin/activate
 
 # Install necessary packages
 pip install django psycopg2-binary djangorestframework
