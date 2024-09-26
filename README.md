@@ -204,3 +204,39 @@ Contributions are welcome! Please read the [contributing guidelines](CONTRIBUTIN
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
+
+
+
+
+### Changes Made 26.09.2024
+
+1. **Inheritance from `AbstractUser` in `User` Model**:
+   - **Why**: To ensure the custom `User` model includes all necessary methods and attributes required by Django's authentication system.
+   - **What**: Changed the custom `User` model to inherit from `AbstractUser` instead of `models.Model`.
+
+2. **Field Definitions in `User` Model**:
+   - **Why**: To ensure custom fields like `username`, `email`, and `password` are compatible with `AbstractUser`.
+   - **What**: Defined these fields in the custom `User` model.
+
+3. **`REQUIRED_FIELDS` and `USERNAME_FIELD` in `User` Model**:
+   - **Why**: To specify which fields are required and which field is used for authentication.
+   - **What**: Set `REQUIRED_FIELDS` to `['email']` and `USERNAME_FIELD` to `username`.
+
+4. **`AUTH_USER_MODEL` Setting in `settings.py`**:
+   - **Why**: To inform Django to use the custom `User` model for authentication and user management.
+   - **What**: Set `AUTH_USER_MODEL` to `'users.User'`.
+
+5. **Database Migrations**:
+   - **Why**: To update the database schema to reflect the changes made to the custom `User` model.
+   - **What**: Ran `python manage.py makemigrations` and `python manage.py migrate`.
+
+6. **Added `__str__` Method to `Task` Model**:
+   - **Why**: To fix the test failure related to the string representation of the `Task` model.
+   - **What**: Added the `__str__` method to the `Task` model to return the `title` of the task.
+
+### Summary
+
+- **Updated Custom `User` Model**: Ensured compatibility with Django's authentication system.
+- **Verified `settings.py`**: Set `AUTH_USER_MODEL` to use the custom `User` model.
+- **Migrated Database**: Updated the database schema.
+- **Fixed `Task` Model Test**: Added `__str__` method to return the `title` of the task.

@@ -19,3 +19,6 @@ class Task(models.Model):
     
     # The timestamp when the task was last updated
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
