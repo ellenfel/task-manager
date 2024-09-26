@@ -76,3 +76,43 @@ class TaskModelTest(TestCase):
         task.delete()
         with self.assertRaises(Task.DoesNotExist):
             Task.objects.get(id=task_id)
+
+    def test_create_task_with_max_title_length(self):
+        task = Task.objects.create(user=self.user, title='a' * 255, description='Test description')
+        task.full_clean()  # Should not raise ValidationError
+
+    #$ python manage.py test tests -v 2
+
+    def test_create_task_with_max_description_length(self):
+        task = Task.objects.create(user=self.user, title='Test Task', description='a' * 1000)
+        task.full_clean()
+
+    def test_create_task_with_excessively_long_description(self):
+        with self.assertRaises(ValidationError):
+            task = Task(user=self.user, title='Test Task', description='a' * 1001)
+            task.full_clean()
+
+"""
+
+    def test_create_task_with_empty_description(self):
+        task = Task.objects.create(user=self.user, title='Test Task', description='')
+        task.full_clean()   # Should not raise ValidationError
+
+    def test_create_task_with_null_description(self):
+        task = Task.objects.create(user=self.user, title='Test Task')
+        task.full_clean()
+
+    def test_create_task_with_null_completed_status(self):
+        task = Task.objects.create(user=self.user, title='Test Task', description='Test description')
+        task.full_clean()
+
+    def test_create_task_with_null_user(self):
+        with self.assertRaises(ValidationError):
+            task = Task(title='Test Task', description='Test description')
+            task.full_clean()
+
+    def test_create_task_with_invalid_user(self):
+        with self.assertRaises(ValueError):
+            task = Task(user='invalid_user', title='Test Task', description='Test description')
+            task.full_clean()
+"""
