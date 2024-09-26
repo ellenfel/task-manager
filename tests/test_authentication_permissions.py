@@ -41,12 +41,12 @@ class UserAuthPermissionsTest(TestCase):
         """Ensure authenticated users cannot access tasks owned by other users."""
         self.client.login(username='user2', password='password123')
         response = self.client.get(reverse('task-detail', args=[self.task.id]))
-        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_unauthenticated_user_cannot_access_any_tasks(self):
         """Ensure unauthenticated users cannot access tasks."""
         response = self.client.get(reverse('task-detail', args=[self.task.id]))
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
     def test_authenticated_user_can_create_task(self):
         """Ensure authenticated users can create tasks."""
@@ -68,7 +68,7 @@ class UserAuthPermissionsTest(TestCase):
             'completed': False
         }
         response = self.client.post(reverse('task-list'), data)
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
     def test_authenticated_user_can_update_own_task(self):
         """Ensure users can update their own tasks."""
@@ -93,7 +93,7 @@ class UserAuthPermissionsTest(TestCase):
             'completed': True
         }
         response = self.client.put(reverse('task-detail', args=[self.task.id]), data)
-        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_authenticated_user_can_delete_own_task(self):
         """Ensure users can delete their own tasks."""
@@ -105,4 +105,4 @@ class UserAuthPermissionsTest(TestCase):
         """Ensure users cannot delete tasks that belong to other users."""
         self.client.login(username='user2', password='password123')
         response = self.client.delete(reverse('task-detail', args=[self.task.id]))
-        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
