@@ -43,7 +43,7 @@ task_manager/
 │   ├── serializers.py
 │   ├── views.py
 │   ├── tests.py
-│   ├── urls.py
+│   ├── s.py
 ├── users/
 │   ├── __init__.py
 │   ├── admin.py
@@ -52,7 +52,7 @@ task_manager/
 │   ├── serializers.py
 │   ├── views.py
 │   ├── tests.py
-│   ├── urls.py
+│   ├── s.py
 ├── tests/
 │   ├── __init__.py
 │   ├── test_tasks.py
