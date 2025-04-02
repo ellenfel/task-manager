@@ -1,7 +1,13 @@
 #!/bin/bash
 
+
 # Exit immediately if a command exits with a non-zero status
 set -e
+
+
+# Install necessary packages
+pip install django psycopg2-binary djangorestframework
+
 
 # Initialize Git repository
 #git init task_manager

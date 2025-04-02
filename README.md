@@ -390,12 +390,9 @@ Create a robust backend for managing tasks, users, and interactions. Implement a
 - Add gamification features such as experience points and task ratings.
 - Integrate AI for advanced task management and user interaction.
 
-**Development Timeline:**
-- Allocate 1-2 hours daily for development.
-- Break down tasks into sprints: project initialization, core functionality, frontend integration, testing, and deployment.
 
 **Notes:**
 - Emphasize backend development for a strong foundation.
 - Plan for incremental updates and scalability.
-
+- Its not yet completed
 
