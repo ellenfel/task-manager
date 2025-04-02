@@ -1,3 +1,39 @@
 __pycache__/
 **/__pycache__/
 
+# Django logs
+*.log
+*.log.*
+
+# Python
+*.pyc
+*.pyo
+*.pyd
+*.pyw
+
+# Environment variables
+.env
+
+# Virtual environment
+venv/
+
+# Django migrations
+**/migrations/*.py
+!**/migrations/__init__.py
+
+# Django secret key
+SECRET_KEY=your_secret_key_here
+
+# Django debug toolbar
+debug_toolbar/
+
+# Django static files
+staticfiles/
+
+# Django media files
+media/
+
+# Django collectstatic
+collectstatic/
+
+
