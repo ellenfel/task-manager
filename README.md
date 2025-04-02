@@ -306,7 +306,7 @@ Create a robust backend for managing tasks, users, and interactions. Implement a
 
 4. **User Authentication:**
    - Implement user registration and authentication.
-   - Use Django’s built-in authentication system or Django REST Framework’s authentication classes.
+   - Use Django's built-in authentication system or Django REST Framework's authentication classes.
 
 5. **Frontend Integration:**
    - Develop React components to interact with backend APIs.
@@ -396,3 +396,27 @@ Create a robust backend for managing tasks, users, and interactions. Implement a
 - Plan for incremental updates and scalability.
 - Its not yet completed
 
+
+**Example curl commands:**
+```
+# Registers a new user
+curl -X POST http://localhost:8000/api/register/ \
+-H "Content-Type: application/json" \
+-d '{
+    "username": "testuser",
+    "email": "testuser@example.com",
+    "password": "testpassword123"
+}'
+
+# Logs in to get token
+curl -X POST http://localhost:8000/api/login/ \
+-H "Content-Type: application/json" \
+-d '{
+    "username": "your_username",
+    "password": "your_password"
+}'
+
+#Example of using the token
+curl -H "Authorization: Bearer <your_token>" http://localhost:8000/api/
+
+```
