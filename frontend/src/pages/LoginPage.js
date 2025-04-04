@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -14,7 +15,7 @@ const LoginPage = () => {
       localStorage.setItem('token', response.data.token); // Store the token
       navigate('/tasks'); // Redirect to the tasks page
     } catch (error) {
-      console.error('Login failed:', error);
+      setError('Wrong username or password'); // Set error message
     }
   };
 
@@ -42,6 +43,7 @@ const LoginPage = () => {
             required
           />
         </div>
+        {error && <p className="text-red-500 mb-4">{error}</p>}
         <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
           Login
         </button>

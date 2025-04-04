@@ -1,12 +1,8 @@
 # Task Manager Application
 
 ## Overview
-The Task Manager Application is a web-based platform designed to help users manage their tasks efficiently. It includes features for user authentication, task creation, and task management. The application is built using Django for the backend and React for the frontend, with PostgreSQL as the database.
 
-<p float="left">
-  <img src="docs/images/cook.png" width="49%" />
-  <img src="docs/images/mainPage.png" width="49%" />
-</p>
+The Task Manager Application is a web-based platform designed to help users manage their tasks efficiently. It includes features for user authentication, task creation, and task management. The application is built using Django for the backend and React for the frontend, with PostgreSQL as the database.
 
 ## Table of Contents
 
