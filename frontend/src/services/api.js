@@ -28,6 +28,11 @@ export const createTask = async (task) => {
   return response.data;
 };
 
+export const getCurrentUser = async () => {
+  const response = await api.get('/users/me/');
+  return response.data;
+};
+
 // Add other API methods as needed
 
 export default api;

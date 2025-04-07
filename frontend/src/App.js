@@ -5,6 +5,7 @@ import TaskPage from './pages/TaskPage';
 import LoginPage from './pages/LoginPage';
 import NotFoundPage from './pages/NotFoundPage';
 import Navbar from './components/Navbar';
+import { getCurrentUser } from './services/api';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -12,9 +13,11 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      // Fetch user data if token exists
-      // This is a placeholder; replace with actual API call
-      setUser({ username: 'Current User' });
+      getCurrentUser().then(userData => {
+        setUser(userData);
+      }).catch(error => {
+        console.error('Error fetching user data:', error);
+      });
     }
   }, []);
 

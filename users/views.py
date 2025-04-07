@@ -3,10 +3,11 @@ from rest_framework import viewsets  # Provides a set of views for handling CRUD
 from .models import User  # Importing the User model from the current directory
 from .serializers import UserSerializer  # Importing the UserSerializer from the current directory
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.permissions import IsAuthenticated
 
 # Defining a class named UserViewSet that inherits from viewsets.ModelViewSet
 class UserViewSet(viewsets.ModelViewSet):
@@ -36,3 +37,11 @@ def register(request):
         return Response({'error': 'Username already exists'}, status=status.HTTP_400_BAD_REQUEST)
     user = User.objects.create_user(username=username, email=email, password=password)
     return Response({'message': 'User created successfully'}, status=status.HTTP_201_CREATED)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_current_user(request):
+    return Response({
+        'username': request.user.username,
+        'email': request.user.email,
+    })
