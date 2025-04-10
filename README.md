@@ -33,36 +33,36 @@ The Task Manager Application is a web-based platform designed to help users mana
 task_manager/
 ├── env/
 ├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   └── Navbar.js
+│   │   ├── context/
+│   │   │   └── UserContext.js
+│   │   ├── pages/
+│   │   │   ├── HomePage.js
+│   │   │   ├── LoginPage.js
+│   │   │   ├── TaskPage.js
+│   │   │   └── NotFoundPage.js
+│   │   ├── services/
+│   │   │   └── api.js
+│   │   └── App.js
+│   ├── package.json
+│   └── node_modules/
+├── users/
+│   ├── models.py
+│   ├── views.py
+│   ├── urls.py
+│   └── serializers.py
+├── tasks/
+│   ├── models.py
+│   ├── views.py
+│   ├── urls.py
+│   └── serializers.py
 ├── task_manager/
-│   ├── __init__.py
-│   ├── asgi.py
 │   ├── settings.py
 │   ├── urls.py
-│   ├── wsgi.py
-├── tasks/
-│   ├── __init__.py
-│   ├── admin.py
-│   ├── apps.py
-│   ├── models.py
-│   ├── serializers.py
-│   ├── views.py
-│   ├── tests.py
-│   ├── s.py
-├── users/
-│   ├── __init__.py
-│   ├── admin.py
-│   ├── apps.py
-│   ├── models.py
-│   ├── serializers.py
-│   ├── views.py
-│   ├── tests.py
-│   ├── s.py
-├── tests/
-│   ├── __init__.py
-│   ├── test_tasks.py
-│   ├── test_authentication_permissions.py
-├── manage.py
-└── README.md
+│   └── wsgi.py
+└── manage.py
 ```
 
 ## Setup Instructions
