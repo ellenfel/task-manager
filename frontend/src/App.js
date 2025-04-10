@@ -6,6 +6,7 @@ import LoginPage from './pages/LoginPage';
 import NotFoundPage from './pages/NotFoundPage';
 import Navbar from './components/Navbar';
 import { getCurrentUser } from './services/api';
+import { UserProvider } from './context/UserContext';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -17,20 +18,23 @@ function App() {
         setUser(userData);
       }).catch(error => {
         console.error('Error fetching user data:', error);
+        localStorage.removeItem('token'); // Remove invalid token
       });
     }
   }, []);
 
   return (
-    <Router>
-      <Navbar user={user} />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/tasks" element={<TaskPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </Router>
+    <UserProvider>
+      <Router>
+        <Navbar user={user} />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/tasks" element={<TaskPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Router>
+    </UserProvider>
   );
 }
 

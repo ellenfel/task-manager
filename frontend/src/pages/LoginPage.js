@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../context/UserContext';
 
 const LoginPage = () => {
+  const { setUser } = useUser();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -12,10 +14,11 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:8000/api/login/', { username, password });
-      localStorage.setItem('token', response.data.token); // Store the token
-      navigate('/tasks'); // Redirect to the tasks page
+      localStorage.setItem('token', response.data.token);
+      setUser({ username }); // Update user state
+      navigate('/tasks');
     } catch (error) {
-      setError('Wrong username or password'); // Set error message
+      setError('Wrong username or password');
     }
   };
 

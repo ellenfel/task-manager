@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useUser } from '../context/UserContext';
 
-const Navbar = ({ user }) => {
+const Navbar = () => {
+  const { user } = useUser();
+
   return (
     <nav className="bg-gray-800 text-white p-4">
       <div className="container mx-auto flex justify-between items-center">
