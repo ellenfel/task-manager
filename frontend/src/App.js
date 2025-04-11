@@ -5,8 +5,9 @@ import TaskPage from './pages/TaskPage';
 import LoginPage from './pages/LoginPage';
 import NotFoundPage from './pages/NotFoundPage';
 import Navbar from './components/Navbar';
-import { getCurrentUser } from './services/api';
+import { getCurrentUser } from './services/auth';
 import { UserProvider } from './context/UserContext';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -18,7 +19,7 @@ function App() {
         setUser(userData);
       }).catch(error => {
         console.error('Error fetching user data:', error);
-        localStorage.removeItem('token'); // Remove invalid token
+        localStorage.removeItem('token');
       });
     }
   }, []);
@@ -30,7 +31,11 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/tasks" element={<TaskPage />} />
+          <Route path="/tasks" element={
+            <ProtectedRoute>
+              <TaskPage />
+            </ProtectedRoute>
+          } />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Router>
