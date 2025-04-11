@@ -36,6 +36,7 @@ task_manager/
 │   ├── src/
 │   │   ├── components/
 │   │   │   └── Navbar.js
+│   │   │   └── ProtectedRoute.js
 │   │   ├── context/
 │   │   │   └── UserContext.js
 │   │   ├── pages/
@@ -45,6 +46,7 @@ task_manager/
 │   │   │   └── NotFoundPage.js
 │   │   ├── services/
 │   │   │   └── api.js
+│   │   │   └── auth.js
 │   │   └── App.js
 │   ├── package.json
 │   └── node_modules/
