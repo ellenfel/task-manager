@@ -85,13 +85,13 @@ task_manager/
 
 2. **Create and activate a virtual environment:**
      ```bash
-     python3 -m venv env
-     source env/bin/activate
+     python3 -m venv venv
+     source venv/bin/activate
      ```
 
 3. **Install the required packages:**
      ```bash
-     pip install django psycopg2-binary djangorestframework
+     pip install -r requirements.txt
      ```
 
 4. **Configure PostgreSQL database:**
@@ -453,8 +453,8 @@ curl -X POST http://localhost:8000/api/register/ \
 curl -X POST http://localhost:8000/api/login/ \
 -H "Content-Type: application/json" \
 -d '{
-    "username": "your_username",
-    "password": "your_password"
+    "username": "testuser",
+    "password": "testpassword123"
 }'
 
 #Example of using the token

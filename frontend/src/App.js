@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage';
 import TaskPage from './pages/TaskPage';
 import LoginPage from './pages/LoginPage';
 import NotFoundPage from './pages/NotFoundPage';
+import ProfilePage from './pages/ProfilePage';
 import Navbar from './components/Navbar';
 import { getCurrentUser } from './services/auth';
 import { UserProvider } from './context/UserContext';
@@ -34,6 +35,11 @@ function App() {
           <Route path="/tasks" element={
             <ProtectedRoute>
               <TaskPage />
+            </ProtectedRoute>
+          } />
+          <Route path="/profile" element={
+            <ProtectedRoute>
+              <ProfilePage />
             </ProtectedRoute>
           } />
           <Route path="*" element={<NotFoundPage />} />

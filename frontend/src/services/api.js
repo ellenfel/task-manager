@@ -33,6 +33,11 @@ export const getCurrentUser = async () => {
   return response.data;
 };
 
+export const deleteTask = async (taskId) => {
+  const response = await api.delete(`/tasks/${taskId}/`);
+  return response.data;
+};
+
 // Add other API methods as needed
 
 export default api;

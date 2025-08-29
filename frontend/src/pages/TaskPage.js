@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getTasks, createTask } from '../services/api';
+import { getTasks, createTask, deleteTask } from '../services/api';
 
 const TaskPage = () => {
   const [tasks, setTasks] = useState([]);
@@ -19,6 +19,11 @@ const TaskPage = () => {
     const task = await createTask(newTask);
     setTasks([...tasks, task]);
     setNewTask({ title: '', description: '' });
+  };
+
+  const handleDelete = async (taskId) => {
+    await deleteTask(taskId);
+    setTasks(tasks.filter((task) => task.id !== taskId));
   };
 
   return (
@@ -46,9 +51,17 @@ const TaskPage = () => {
       </form>
       <ul className="bg-white shadow-md rounded-lg p-4">
         {tasks.map((task) => (
-          <li key={task.id} className="border-b last:border-b-0 py-4">
-            <div className="text-xl">{task.title}</div>
-            <p className="text-gray-600">{task.description}</p>
+          <li key={task.id} className="border-b last:border-b-0 py-4 flex items-center justify-between">
+            <div>
+              <div className="text-xl">{task.title}</div>
+              <p className="text-gray-600">{task.description}</p>
+            </div>
+            <button
+              onClick={() => handleDelete(task.id)}
+              className="ml-4 bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+            >
+              Clear
+            </button>
           </li>
         ))}
       </ul>
