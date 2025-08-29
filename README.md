@@ -460,4 +460,8 @@ curl -X POST http://localhost:8000/api/login/ \
 #Example of using the token
 curl -H "Authorization: Bearer <your_token>" http://localhost:8000/api/
 
+#Example of getting user profile
+curl -H "Authorization: Bearer <your_token>" http://localhost:8000/api/me/
+
+
 ```
